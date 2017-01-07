@@ -97,9 +97,13 @@ body {  padding-top: 3em}
 	color: #000;
 }
 
-.card .card-block, 
+.card .card-block {
+	padding: 3px 10px;
+}
+
 .card .card-header {
 	padding: 3px 10px;
+	font-size: 24px;
 } 
 
 .card .card-block-content {
