@@ -40,7 +40,7 @@ body {  padding-top: 3em}
 .content-container .add-form {
 	background-color: #fff;
 	border-radius: .45rem;
-	padding: 2px 6px;
+	padding: 9px 6px;
 }
 
 .content-container .add-form .form-control-file {
@@ -49,19 +49,19 @@ body {  padding-top: 3em}
 
 .documents .icon-1 {
 	position: absolute;
-	bottom: 93px;
+	bottom: 105px;
 	left: 300px;
 }
 
 .documents .icon-2 {
 	position: absolute;
-	bottom: 65px;
+	bottom: 70px;
 	left: 300px;
 }
 
 .documents .icon-3 {
 	position: absolute;
-	bottom: 65px;
+	bottom: 70px;
 	left: 318px;
 }
 
@@ -97,7 +97,7 @@ body {  padding-top: 3em}
 	color: #000;
 }
 
-.car .card-block, 
+.card .card-block, 
 .card .card-header {
 	padding: 3px 10px;
 } 
@@ -141,12 +141,12 @@ body {  padding-top: 3em}
 }
 
 @media print {    
+	
 	.card, .card-header, .card-title {   
  		border: none;
    	}
- 	
+
  	.no-print, .no-print * {
     	display: none !important;
  	}
-
 }
