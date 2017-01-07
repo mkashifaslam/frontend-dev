@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content="">
+	<meta name="author" conten="">
+	<link rel="icon" href="../../favicon.ico">
+	<title>Add Project</title>
+	<!-- Bootstrap core CSS -->
+	<link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="node_modules/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+	<!-- Custom styles for this template-->
+	<link href="css/style.css" rel="stylesheet" /> 
+</head>
+
+<body class="bg-success">
+<nav class="navbar navbar-toggleable-md bg-white fixed-top">
+    <a class="navbar-brand" href="#"><img src="images/ebryx-logo.png" width="118" height="27" alt="Ebryx" title="Ebryx"></a>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="users.html">Users</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container-fluid">
+	<div class="content-container table-responsive">
+		<div><h2 class="heading">Add Project</h2></div>     
+		<form class="add-form">       
+		    <div class="form-group">
+		     	<label for="title">Title</label>         
+		   		<input type="text" class="form-control" id="title" placeholder="Project name">
+		    </div>       
+		 	<div class="form-group">
+		   		<label for="description">Description</label>
+				<textarea class="form-control" id="description" rows="5"></textarea>
+		    </div>
+		    <div class="form-group">
+		     	<label for="team-lead">Team lead</label>         
+		   		<input type="text" class="form-control" id="team-lead" placeholder="Team lead" value="Iqbal Mehmood">
+		    </div>
+		    <div class="form-group">
+		   		<label for="members">Members</label>
+				<textarea class="form-control" id="members" rows="4">Iqbal Mehmood&#13;&#10;Salman Khan&#13;&#10;Saqib Dogar&#13;&#10;Kabir Sagheer</textarea>
+		    </div>
+		    <div class="form-group documents">
+		        <label for="document">Document</label>
+				<input type="file" class="form-control-file" id="document1" aria-describedby="fileHelp">         
+		   		<span class="icon-1"><i class="fa fa-plus blue" aria-hidden="true"></i></span>
+		        <input type="file" class="form-control-file" id="document2" aria-describedby="fileHelp">       
+		     	<span class="icon-2"><i class="fa fa-plus blue" aria-hidden="true"></i></span>           
+		 		<span class="icon-3"><i class="fa fa-times red" aria-hidden="true"></i></span>
+		    </div>
+		    <div class="form-group">
+		   		<button type="button" class="btn btn-primary pull-right">Submit</button>   
+		        <button type="button" class="btn btn-link pull-right">Cancel</button>
+		    </div>
+		    <div class="clearfix"></div>      
+	  	</form>
+  	</div>
+</div>
+</body>
+</html>
