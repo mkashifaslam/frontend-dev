@@ -1,0 +1,15 @@
+{
+  "name": "bootstrap4",
+  "version": "1.0.0",
+  "description": "this is a sample for local running boostrap 4 version",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "author": "Muhammad Kashif",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.6",
+    "font-awesome": "^4.7.0"
+  }
+}

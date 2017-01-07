@@ -1,0 +1,152 @@
+body {  padding-top: 3em}
+
+.bg-white {
+  background-color: #fff!important;
+  color: #000;
+}
+
+.content-container {
+	margin: 0 auto;
+	padding: 6px 12px;
+}
+
+.content-container .heading, 
+.content-container h1,
+.content-container h2,
+.content-container h3 {
+	color: #fff;
+}
+
+.content-container .task-link {
+	position: absolute;
+	top: 11px;
+	right: 18px;
+}
+
+.content-container .task-link a {
+	font-size: 12px;
+	font-weight: 800;
+}
+
+.content-container .form-signin {
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.content-container .form-sign .form-group {
+	margin-bottom: 0.3rem;
+}
+
+.content-container .add-form {
+	background-color: #fff;
+	border-radius: .45rem;
+	padding: 2px 6px;
+}
+
+.content-container .add-form .form-control-file {
+	margin-bottom: 5px;
+}
+
+.documents .icon-1 {
+	position: absolute;
+	bottom: 93px;
+	left: 300px;
+}
+
+.documents .icon-2 {
+	position: absolute;
+	bottom: 65px;
+	left: 300px;
+}
+
+.documents .icon-3 {
+	position: absolute;
+	bottom: 65px;
+	left: 318px;
+}
+
+.documents .blue {
+	color: blue;
+}
+
+.documents .red {
+	color: red;
+}
+
+.content-container table thead th {
+	background-color: #DCDCDC;
+	border-top: 1px solid #DCDCDC;
+	border-bottom: 1px solid #DCDCDC;
+}
+
+.card {
+	margin-bottom: 5px;
+}
+
+.card .card-block {
+	background-color: #DCDCDC;
+}
+
+.card .card-title {
+	font-weight: bold;
+}
+
+.card .card-header {
+	background-color: #DCDCDC;
+	border: none;
+	color: #000;
+}
+
+.car .card-block, 
+.card .card-header {
+	padding: 3px 10px;
+} 
+
+.card .card-block-content {
+	background-color: #fff;
+	border-radius:.45rem;
+	padding: 2px 6px;
+	min-height: 50px;
+    margin-bottom: 5px;
+}
+
+.menu {
+	margin-left: 15px;
+} 
+
+.nav-item a {
+	color: #ccc;
+} 
+
+.nav-item.active a {
+	color: #666;
+}
+
+.btn-block {    
+	display: block;
+    width: 100%;
+} 
+
+.alert-white
+ {
+ 	background-color: #fff;
+ }
+
+.assignee {
+	padding: 5px;
+} 
+
+.assigned-user {
+	margin-top: 10px;
+}
+
+@media print {    
+	.card, .card-header, .card-title {   
+ 		border: none;
+   	}
+ 	
+ 	.no-print, .no-print * {
+    	display: none !important;
+ 	}
+
+}
