@@ -9,7 +9,7 @@
   "author": "Muhammad Kashif",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^4.0.0-alpha.6",
+    "bootstrap": "^4.0.0-alpha.5",
     "font-awesome": "^4.7.0"
   }
 }
