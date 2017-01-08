@@ -1,4 +1,4 @@
-body {  padding-top: 3em}
+body {  padding-top: 3em; font-family: Arial; }
 
 .bg-white {
   background-color: #fff!important;
@@ -33,7 +33,7 @@ body {  padding-top: 3em}
 	margin: 0 auto;
 }
 
-.content-container .form-sign .form-group {
+.content-container .form-signin .form-group {
 	margin-bottom: 0.3rem;
 }
 
@@ -110,8 +110,12 @@ body {  padding-top: 3em}
 	background-color: #fff;
 	border-radius:.45rem;
 	padding: 2px 6px;
-	min-height: 50px;
+	min-height: 60px;
     margin-bottom: 5px;
+}
+
+.card .card-block-content .task-title {
+	padding-bottom: 7px;
 }
 
 .menu {
