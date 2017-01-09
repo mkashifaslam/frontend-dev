@@ -77,8 +77,9 @@ body { font-family: Arial; padding: 3rem;}
 	padding: 9px 6px;
 }
 
-.content-container .add-form form {	
-	margin-bottom: 10px;
+.content-container .add-form form.list-group {	
+	background-color: #DCDCDC;
+	padding: 5px;
 }
 .content-container .add-form .heading {
 	font-weight: bold;
