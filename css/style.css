@@ -77,6 +77,14 @@ body { font-family: Arial; padding: 3rem;}
 	padding: 9px 6px;
 }
 
+.content-container .add-form .detail {
+		
+}
+
+.content-container .add-form .heading {
+	font-weight: bold;
+	padding-left: 10px;
+}
 .content-container .add-form .form-control-file {
 	margin-bottom: 5px;
 }
