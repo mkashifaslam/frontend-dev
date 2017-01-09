@@ -1,4 +1,4 @@
-body { font-family: Arial; }
+body { font-family: Arial; padding: 3rem;}
 
 .nav-masthead {
   background-color: #428bca;
@@ -53,8 +53,8 @@ body { font-family: Arial; }
 
 .content-container .task-link {
 	position: absolute;
-	top: 56px;
-	right: 18px;
+	top: 10px;
+	right: 5px;
 }
 
 .content-container .task-link a {
