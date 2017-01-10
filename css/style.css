@@ -35,6 +35,10 @@ body { font-family: Arial; }
 	padding: 12px 10px;
 }
 
+.brand-logo.form-signin{
+	position: absolute;
+    top: 3px;
+}
 .bg-white {
   background-color: #fff!important;
   color: #000;
