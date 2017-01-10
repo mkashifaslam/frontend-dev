@@ -214,6 +214,10 @@ body { font-family: Arial; }
  		border: none;
    	}
 
+   	.card a {
+   		color: #000;
+   	}
+
  	.no-print, .no-print * {
     	display: none !important;
  	}
