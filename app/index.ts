@@ -1,4 +1,4 @@
-import App from './controllers/app';
+import App from './boot/app';
 
 App();
 
