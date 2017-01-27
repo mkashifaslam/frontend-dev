@@ -5,8 +5,9 @@ module.exports = {
 		filename: 'bundle.js'
 	},
 	 resolve: {
-    	extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
+    	extensions: ['', '.webpack.js', '.web.js', '.ts', '.js', '.ejs', '.css']
   	},
+  	devtool: 'source-map',
 	module: {
 		loaders: [
 			{
@@ -18,8 +19,14 @@ module.exports = {
 			 	test: /\.css$/, 
 			 	loader: "style-loader!css-loader" 
 			 },
-			{test: /\.(jpe?g|png|gif|svg)$/i, loader: "file-loader?name=/images/[name].[ext]"}
+			{test: /\.(jpe?g|png|gif|svg)$/i, loader: "file-loader?name=/images/[name].[ext]"},
+			 { test: /\.ejs$/, loader: 'ejs-loader?variable=data' },
 		]
+	},
+	ejsLoader : {
+	    variable    : 'data',
+	    interpolate : /\{\{(.+?)\}\}/g,
+	    evaluate    : /\[\[(.+?)\]\]/g
 	},
 	devServer : {
 		port: 3000,
