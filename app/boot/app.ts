@@ -8,5 +8,5 @@ export default () => {
 
 	var pageHtml = loader("signin", {title: "Signin"});
 
-   	$("body").html(pageHtml);		
+   	$("body").addClass("bg-success").html(pageHtml);		
 }
