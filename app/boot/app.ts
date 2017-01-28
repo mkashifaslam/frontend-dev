@@ -6,7 +6,7 @@ import loader from "./loader";
 
 export default () => {
 
-	var signin = loader("signin", {title: "Signin"});
+	var pageHtml = loader("signin", {title: "Signin"});
 
-   	$("body").html(signin);		
+   	$("body").html(pageHtml);		
 }
