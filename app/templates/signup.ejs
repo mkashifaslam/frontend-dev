@@ -8,16 +8,16 @@
         <form class="form-signin">
           <h3><%= title %></h3>
           <div class="form-group">            
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="First Name">
+            <input type="text" class="form-control" id="firstName" placeholder="First Name">
           </div>
           <div class="form-group">            
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Last Name">
+            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
           </div>
           <div class="form-group">            
-            <input type="email" class="form-control" id="formGroupExampleInput" placeholder="Email Address">
+            <input type="email" class="form-control" id="email" placeholder="Email Address">
           </div>
           <div class="form-group">            
-            <select multiple class="form-control" size="5">
+            <select multiple class="form-control" id="role" size="5">
               <option>Admin</option>
               <option>Team Lead</option>
               <option>Junior Software Engineer</option>
@@ -26,10 +26,10 @@
             </select>
           </div>           
           <div class="form-group">            
-            <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Password">
+            <input type="password" class="form-control" id="password" placeholder="Password">
           </div>
           <div class="form-group">
-            <button type="button" class="btn btn-primary btn-block">Sign Up</button>
+            <button type="button" id="submit" class="btn btn-primary btn-block">Sign Up</button>
           </div>
         </form>
       </div>
