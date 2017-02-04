@@ -5,7 +5,6 @@ import { Router } from './router';
 
 function viewLoader(page: string, data: Object) {
 	var template = require(`../templates/${page}.ejs`);
-	console.log(JSON.stringify(template));
 	var $main = $("body").addClass('bg-success');
 	$main.html(template(data));
 }
@@ -26,10 +25,22 @@ function bindController(controller, data) {
 			controllerClass = new Home();
 			eventBinder("home", controllerClass);
 			break;
+		case "home_project":
+			controllerClass = new Home();
+			eventBinder("home_project", controllerClass);
+			break;
 		case "add_project":
 			controllerClass = new Home();
 			eventBinder("add_project", controllerClass);
+			break;
+		case "project_detail":
+			controllerClass = new Home();
+			eventBinder("project_detail", controllerClass);
 			break;		
+		case "users":
+			controllerClass = new Home();
+			eventBinder("users", controllerClass);
+			break;
 		default:
 			controllerClass = new Login();
 			eventBinder("login", controllerClass);
@@ -58,11 +69,27 @@ function eventBinder(eventName, controller) {
 		$(".task-link").on('click', 'a', function(){
 			eventHandler(eventName, controller, {title: eventName});
 		});
+		$("table").on('click', 'a', function(){
+			eventHandler("home_project", controller, {title: eventName});
+		});
 	} else if(eventName == "add_project") {
-		$(".task-link").on('click', 'a', function(){
+		$("form").on('click', 'button', function(){
+			eventHandler(eventName, controller, {title: eventName});
+		});
+	} else if(eventName == "project_detail") {
+		$("form").on('click', 'button', function(){
+			eventHandler(eventName, controller, {title: eventName});
+		});
+	} else if(eventName == "users") {
+		$("form").on('click', 'button', function(){
 			eventHandler(eventName, controller, {title: eventName});
 		});
 	}
+
+	$(".nav").on('click', 'a', function(){
+		var eventName = $(this).attr("id")+"_nav_link";
+		eventHandler(eventName, controller, {title: eventName});
+	});
 }
 
 function eventHandler(eventName, controller, data) {
@@ -80,6 +107,12 @@ function eventHandler(eventName, controller, data) {
 
 function routeHandler(eventName, controller) {
 	switch (eventName) {
+		case "home_nav_link":
+			bindController("home", {title: "Add Project"});
+			break;
+		case "user_nav_link":
+			bindController("users", {title: "Users"});
+			break;
 		case "login":
 			bindController("signup", {title: "Signup"});
 			break;
@@ -87,7 +120,16 @@ function routeHandler(eventName, controller) {
 			bindController("home", {title: "Home"});
 			break;		
 		case "home":
-			bindController("add_project", {title: "Home"});
+			bindController("add_project", {title: "Add Project"});
+			break;
+		case "home_project":
+			bindController("project", {title: "Project Dashboard"});
+			break;
+		case "add_project":
+			bindController("home", {title: "Home"});
+			break;
+		case "project_detail":
+			bindController("home", {title: "Home"});
 			break;
 		default:
 			bindController("signup", {title: "Signup"});
