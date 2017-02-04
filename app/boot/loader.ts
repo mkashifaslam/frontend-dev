@@ -41,6 +41,18 @@ function bindController(controller, data) {
 			controllerClass = new Home();
 			eventBinder("users", controllerClass);
 			break;
+		case "add_task":
+			controllerClass = new Home();
+			eventBinder("add_task", controllerClass);
+			break;
+		case "project":
+			controllerClass = new Home();
+			eventBinder("project", controllerClass);
+			break;
+		case "task_detail":
+			controllerClass = new Home();
+			eventBinder("task_detail", controllerClass);
+			break;		
 		default:
 			controllerClass = new Login();
 			eventBinder("login", controllerClass);
@@ -82,6 +94,21 @@ function eventBinder(eventName, controller) {
 		});
 	} else if(eventName == "users") {
 		$("form").on('click', 'button', function(){
+			eventHandler(eventName, controller, {title: eventName});
+		});
+	} else if(eventName == "project") {
+		$(".task-link").on('click', 'a', function(){
+			eventHandler(eventName, controller, {title: eventName});
+		});
+		$(".task-title").on('click', 'a', function(){
+			eventHandler("project_task", controller, {title: eventName});
+		});
+	} else if(eventName == "add_task") {
+		$("form").on('click', 'button', function(){
+			eventHandler(eventName, controller, {title: eventName});
+		});
+	} else if(eventName == "task_detail") {
+		$(".form-group").on('click', 'button', function(){
 			eventHandler(eventName, controller, {title: eventName});
 		});
 	}
@@ -131,6 +158,18 @@ function routeHandler(eventName, controller) {
 		case "project_detail":
 			bindController("home", {title: "Home"});
 			break;
+		case "project":
+			bindController("add_task", {title: "Project Dashboard"});
+			break;
+		case "task_detail":
+			bindController("project", {title: "Task Detail"});
+			break;
+		case "project_task":
+			bindController("task_detail", {title: "Task Detail"});
+			break;	
+		case "add_task":
+			bindController("project", {title: "Project Dashboard"});
+			break;	
 		default:
 			bindController("signup", {title: "Signup"});
 			break;	
