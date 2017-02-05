@@ -6,5 +6,11 @@ import { bindController } from "./loader";
 
 export default () => {
 	var page = "signin";
-	bindController(page, { title: "Signin" });
+	var user = localStorage.getItem('user');
+	if(user != undefined) {
+		page = "home";
+		bindController(page, { title: "Home" });
+	} else {
+		bindController(page, { title: "Signin" });	
+	}
 }

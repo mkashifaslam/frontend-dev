@@ -79,9 +79,11 @@ function eventBinder(eventName, controller) {
 		});	
 	} else if(eventName == "home") {
 		$(".task-link").on('click', 'a', function(){
+			console.log("====task link====");
 			eventHandler(eventName, controller, {title: eventName});
 		});
 		$("table").on('click', 'a', function(){
+			console.log("====project home====");
 			eventHandler("home_project", controller, {title: eventName});
 		});
 	} else if(eventName == "add_project") {
@@ -120,16 +122,24 @@ function eventBinder(eventName, controller) {
 }
 
 function eventHandler(eventName, controller, data) {
+	var action = false;
 	if(eventName == "login") {
-	 	var action = controller.loginHandler(data);
-	 	
+	 	action = controller.authentication();
+	 	if(!action) {
+	 		console.log("====action=====");
+	 		action = controller.loginHandler(data);
+	 	}	
 	} else if (eventName == "signup") {
-		var action = controller.signUpHandler(data);
+		action = controller.signUpHandler(data);
 	} else if(eventName == "home") {
-		var action = controller.list(data);
+		action = controller.list(data);
+	} else {
+		action = true;
 	}
 
-	routeHandler(eventName, controller);
+	if(action) {
+		routeHandler(eventName, controller);	
+	}
 }
 
 function routeHandler(eventName, controller) {
@@ -141,7 +151,7 @@ function routeHandler(eventName, controller) {
 			bindController("users", {title: "Users"});
 			break;
 		case "login":
-			bindController("signup", {title: "Signup"});
+			bindController("home", {title: "Signup"});
 			break;
 		case "signup":
 			bindController("home", {title: "Home"});
@@ -171,7 +181,7 @@ function routeHandler(eventName, controller) {
 			bindController("project", {title: "Project Dashboard"});
 			break;	
 		default:
-			bindController("signup", {title: "Signup"});
+			bindController("login", {title: "Login"});
 			break;	
 	}
 }

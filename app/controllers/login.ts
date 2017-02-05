@@ -13,8 +13,12 @@ export class Login {
 		var password = data['password'];
 		this.user.email = email;
 		this.user.password = password;
-		console.log('click on login button'+JSON.stringify(this.user));
-		return true;
+		console.log(data);
+		if(email == "kashif.aslam@ebryx.com" && password == "ebryx123") {
+			localStorage.setItem('user', JSON.stringify(this.user));
+			return true;	
+		}
+		return false;
 	}
 
 	signUpHandler(data): boolean {
@@ -23,7 +27,15 @@ export class Login {
 		this.user.email = data['firstName'];
 		this.user.password = data['lastName'];
 		this.user.role = data['role'];
-		console.log('click on signup button'+JSON.stringify(this.user));
+		localStorage.setItem('user', JSON.stringify(this.user));
 		return true;
+	}
+
+	authentication(): boolean {
+		var user = localStorage.getItem('user');
+		if(user != undefined) {
+			return true;
+		}
+		return false;
 	}
 }
