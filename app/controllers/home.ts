@@ -8,7 +8,7 @@ export class Home {
 		this.project = new Project();
 	}
 
-	list(): void {
-		// return the project list
+	list(): boolean {
+		return true;
 	}
 }

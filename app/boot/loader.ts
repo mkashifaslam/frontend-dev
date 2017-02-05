@@ -79,11 +79,9 @@ function eventBinder(eventName, controller) {
 		});	
 	} else if(eventName == "home") {
 		$(".task-link").on('click', 'a', function(){
-			console.log("====task link====");
 			eventHandler(eventName, controller, {title: eventName});
 		});
 		$("table").on('click', 'a', function(){
-			console.log("====project home====");
 			eventHandler("home_project", controller, {title: eventName});
 		});
 	} else if(eventName == "add_project") {
@@ -124,9 +122,8 @@ function eventBinder(eventName, controller) {
 function eventHandler(eventName, controller, data) {
 	var action = false;
 	if(eventName == "login") {
-	 	action = controller.authentication();
+	 	action = auth();
 	 	if(!action) {
-	 		console.log("====action=====");
 	 		action = controller.loginHandler(data);
 	 	}	
 	} else if (eventName == "signup") {
@@ -136,7 +133,6 @@ function eventHandler(eventName, controller, data) {
 	} else {
 		action = true;
 	}
-
 	if(action) {
 		routeHandler(eventName, controller);	
 	}
@@ -186,8 +182,16 @@ function routeHandler(eventName, controller) {
 	}
 }
 
+function auth() {
+	var user = localStorage.getItem('user');
+	if(user != undefined) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 export {
-	viewLoader,
-	bindController,
-	routeHandler,
+	auth,
+	bindController
 }
