@@ -1,7 +1,7 @@
 import $ = require("jQuery");
 import { User } from '../models/index';
 import { Login, Home } from '../controllers/index';
-import { Router } from './router';
+import { db } from './db';
 
 function viewLoader(page: string, data: Object) {
 	var template = require(`../templates/${page}.ejs`);
@@ -146,6 +146,9 @@ function routeHandler(eventName, controller) {
 		case "user_nav_link":
 			bindController("users", {title: "Users"});
 			break;
+		case "logout_nav_link":
+			logout();
+			break;
 		case "login":
 			bindController("home", {title: "Signup"});
 			break;
@@ -189,6 +192,11 @@ function auth() {
 	} else {
 		return false;
 	}
+}
+
+function logout() {
+	localStorage.removeItem("user");
+	location.href = "/";
 }
 
 export {
