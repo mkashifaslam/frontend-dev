@@ -1,7 +1,7 @@
 import $ = require("jQuery");
 import { User } from '../models/index';
 import { Login, Home } from '../controllers/index';
-import { db } from './db';
+import { getUser } from './db';
 
 function viewLoader(page: string, data: Object) {
 	var template = require(`../templates/${page}.ejs`);

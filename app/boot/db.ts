@@ -2,9 +2,9 @@ import $ = require("jQuery");
 import { User } from '../models/index';
 import { Login, Home } from '../controllers/index';
 
-function db() {
-	
+function getUser() {
+	var users = localStorage.getItem("users");
 }
 export {
-	db
+	getUser
 }
