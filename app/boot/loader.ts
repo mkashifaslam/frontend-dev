@@ -1,7 +1,7 @@
 import $ = require("jQuery");
 import { User } from '../models/index';
 import { Login, Home } from '../controllers/index';
-import { getUser } from './db';
+import { userAuth,setUser } from './db';
 
 function viewLoader(page: string, data: Object) {
 	var template = require(`../templates/${page}.ejs`);
@@ -67,6 +67,9 @@ function eventBinder(eventName, controller) {
 			 data["email"] = $('#email').val();
 			 data["password"] =  $('#password').val();
 			 eventHandler(eventName, controller, data);
+		});
+		$("form").on('click', '#signupSubmit', function(){
+			 eventHandler("login_signup", controller, {title: "login_signup"});
 		});	
 	} else if(eventName == "signup") {
 		$("form").on('click', '#submit', function(){
@@ -122,7 +125,7 @@ function eventBinder(eventName, controller) {
 function eventHandler(eventName, controller, data) {
 	var action = false;
 	if(eventName == "login") {
-	 	action = auth();
+	 	action = auth(data);
 	 	if(!action) {
 	 		action = controller.loginHandler(data);
 	 	}	
@@ -151,6 +154,9 @@ function routeHandler(eventName, controller) {
 			break;
 		case "login":
 			bindController("home", {title: "Signup"});
+			break;
+		case "login_signup":
+			bindController("signup", {title: "Signup"});
 			break;
 		case "signup":
 			bindController("home", {title: "Home"});
@@ -185,13 +191,16 @@ function routeHandler(eventName, controller) {
 	}
 }
 
-function auth() {
-	var user = localStorage.getItem('user');
-	if(user != undefined) {
+function auth(data) {
+	var email = (data !== undefined) ? data['email'] : "";
+	var password = (data !== undefined) ? data['password'] : "";
+	var user = null;
+	if(email  && password ) {
+		user = userAuth(email, password);
+		setUser(JSON.stringify(user));
 		return true;
-	} else {
-		return false;
 	}
+		return false;
 }
 
 function logout() {

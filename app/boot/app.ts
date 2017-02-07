@@ -3,10 +3,11 @@ import "../css/style.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap.css";
 var logo = require("../images/ebryx-logo.png");
 import { auth, bindController } from "./loader";
+import { getUser } from './db';
 
 export default () => {
 	var page = "signin";
-	if(auth()) {
+	if(auth(getUser())) {
 		page = "home"
 		bindController(page, { title: "Home" });
 	} else {

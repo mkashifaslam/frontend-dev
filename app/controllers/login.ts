@@ -1,4 +1,5 @@
 import { User } from '../models/user';
+import { getUsers } from '../boot/db';
 
 export class Login {
 	
@@ -26,7 +27,13 @@ export class Login {
 		this.user.email = data['firstName'];
 		this.user.password = data['lastName'];
 		this.user.role = data['role'];
-		localStorage.setItem('user', JSON.stringify(this.user));
+		var users = getUsers();
+		var newUsersStr = "";
+		if( users !== undefined && users !== null ) {
+			newUsersStr = users + ":::";	
+		}
+		newUsersStr += JSON.stringify(this.user);
+		localStorage.setItem('users', newUsersStr);
 		return true;
 	}
 }
