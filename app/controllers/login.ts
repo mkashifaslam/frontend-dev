@@ -24,16 +24,16 @@ export class Login {
 	signUpHandler(data): boolean {
 		this.user.email = data['email']; 
 		this.user.password = data['password'];
-		this.user.email = data['firstName'];
-		this.user.password = data['lastName'];
+		this.user.firstName = data['firstName'];
+		this.user.lastName = data['lastName'];
 		this.user.role = data['role'];
 		var users = getUsers();
-		var newUsersStr = "";
-		if( users !== undefined && users !== null ) {
-			newUsersStr = users + ":::";	
+		if( users ) {
+			users.push(this.user);	
+		} else {
+			users = this.user;
 		}
-		newUsersStr += JSON.stringify(this.user);
-		localStorage.setItem('users', newUsersStr);
+		localStorage.setItem('users', JSON.stringify(users));
 		return true;
 	}
 }

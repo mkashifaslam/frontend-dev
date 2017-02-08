@@ -15,27 +15,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>@mdo1</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-              <td>@fat1</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter1</td>
-            </tr>
+            <% for(var i=0; i < users.length; i++) { %>
+            <% var user = users[i]; %>  
+              <tr>
+                <th scope="row"><%= i+1 %></th>
+                <td><%= user.firstName %></td>
+                <td><%= user.lastName %></td>
+                <td><%= user.email %></td>
+                <td><%= user.role %></td>
+              </tr>
+            <% } %>
           </tbody>
         </table>
       </div>

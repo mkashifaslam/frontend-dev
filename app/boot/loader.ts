@@ -1,7 +1,7 @@
 import $ = require("jQuery");
 import { User } from '../models/index';
 import { Login, Home } from '../controllers/index';
-import { userAuth,setUser } from './db';
+import { userAuth,setUser,getUsers } from './db';
 
 function viewLoader(page: string, data: Object) {
 	var template = require(`../templates/${page}.ejs`);
@@ -147,7 +147,7 @@ function routeHandler(eventName, controller) {
 			bindController("home", {title: "Add Project"});
 			break;
 		case "user_nav_link":
-			bindController("users", {title: "Users"});
+			bindController("users", {title: "Users", users: getUsers()});
 			break;
 		case "logout_nav_link":
 			logout();
@@ -197,8 +197,10 @@ function auth(data) {
 	var user = null;
 	if(email  && password ) {
 		user = userAuth(email, password);
-		setUser(JSON.stringify(user));
-		return true;
+		if(user) {
+			setUser(JSON.stringify(user));
+			return true;	
+		}
 	}
 		return false;
 }
