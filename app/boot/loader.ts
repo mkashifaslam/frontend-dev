@@ -34,7 +34,7 @@ function bindController(controller, data) {
 			eventBinder("add_project", controllerClass);
 			break;
 		case "project_detail":
-			controllerClass = new Home();
+			controllerClass = new Projects();
 			eventBinder("project_detail", controllerClass);
 			break;		
 		case "users":
@@ -136,6 +136,8 @@ function eventHandler(eventName, controller, data) {
 		action = controller.list(data);
 	} else if(eventName == "add_project") {
 		action = controller.add(data);
+	} else if(eventName == "home_project") {
+		action = controller.dashboard(data);
 	} else {
 		action = true;
 	}

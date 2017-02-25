@@ -20,6 +20,23 @@ function getObj(type = "user") {
 	}
 	return {};
 }
+
+function setObjectId(type = "usr") {
+	var newCountVal = getObjectId(type);
+	console.log("====new id value====="+newCountVal);
+	localStorage.setItem(type+"_count", newCountVal);
+	return newCountVal;
+}
+
+function getObjectId(type = "usr") {
+	var countVal = (localStorage.getItem(type+"_count")) ? parseInt(localStorage.getItem(type+"_count")) : 0;
+	if(countVal > 0) {
+		countVal = countVal + 1;
+	} else {
+		countVal = 1;
+	}
+	return countVal.toString();
+}
 function userAuth(email: "", password: "") {
 	var user = null;
 	var users = getObjects();
@@ -41,5 +58,6 @@ export {
 	getObj,
 	getObjects,
 	setUser,
+	setObjectId,
 	userAuth
 }

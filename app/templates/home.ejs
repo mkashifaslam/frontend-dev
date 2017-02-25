@@ -13,7 +13,7 @@
               <th>Documents</th>
               <th>Team lead</th>
               <th>Members</th>
-              <th></th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -27,7 +27,7 @@
                 <td><a href="#">etc.pdf</a>,<a href="#">etc.doc</a></td>
                 <td><%= project.teamLead %></td>
                 <td><%= project.members.join(",") %></td>
-                <td><a href="project.html"><i class="fa fa-eye" aria-hidden="true"></i></a></td>  
+                <td><a class="project_detail" href="javascript:void(0);">view<i class="fa fa-eye" aria-hidden="true"></i></a></td>  
               </tr>
             <% } %>
             <% } %>

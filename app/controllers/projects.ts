@@ -1,6 +1,6 @@
 import $ = require("jQuery");
 import { Project } from '../models/project';
-import { getObjects } from '../boot/db';
+import { getObjects, setObjectId } from '../boot/db';
 
 export class Projects {
 	
@@ -13,7 +13,7 @@ export class Projects {
 	add(data: Object): boolean {
 		console.log(data);
 		var members = [];
-		var project = { title: null, description: null, members: [], teamLead: null, document1: null, document2: null }
+		var project = { id: null, title: null, description: null, members: [], teamLead: null, document1: null, document2: null }
 		$.each(data['data'], function(index, element) {
 			var eleName = element.name;
 			var eleVal = element.value;
@@ -32,6 +32,7 @@ export class Projects {
 			}
 		});
 		this.project = project;
+		this.project.id = setObjectId("prj");
 		if(project.title !== "" && project.description !== "" && project.teamLead !== "") {
 			var projects = getObjects("projects");
 			if( projects ) {
@@ -45,7 +46,7 @@ export class Projects {
 		return true;
 	}
 
-	list(): boolean {
+	dashboard(): boolean {
 		return true;
 	}
 }
