@@ -1,6 +1,6 @@
 import $ = require("jQuery");
 import { Project } from '../models/project';
-import { getObjects, setObjectId } from '../boot/db';
+import { getObjects, setObjectId, getObjectById } from '../boot/db';
 
 export class Projects {
 	
@@ -46,7 +46,9 @@ export class Projects {
 		return true;
 	}
 
-	dashboard(): boolean {
-		return true;
+	dashboard(data): boolean {
+		var projectId = data.projectId;
+		console.log(getObjectById(projectId, "projects"));
+		return false;
 	}
 }

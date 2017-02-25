@@ -22,7 +22,7 @@ function bindController(controller, data) {
 			eventBinder("signup", controllerClass);
 			break;
 		case "home":
-			controllerClass = new Home();
+			controllerClass = new Projects();
 			eventBinder("home", controllerClass);
 			break;
 		case "home_project":
@@ -85,7 +85,8 @@ function eventBinder(eventName, controller) {
 			eventHandler(eventName, controller, {title: eventName});
 		});
 		$("table").on('click', 'a', function(){
-			eventHandler("home_project", controller, {title: eventName});
+			var projectId = $(this).attr("id");
+			eventHandler("home_project", controller, {title: eventName, projectId: projectId});
 		});
 	} else if(eventName == "add_project") {
 		$("form").on('click', 'button', function(){
@@ -170,7 +171,7 @@ function routeHandler(eventName, controller) {
 			bindController("add_project", {title: "Add Project"});
 			break;
 		case "home_project":
-			bindController("project", {title: "Project Dashboard"});
+			bindController("project", {title: "Project Dashboard", id: 4});
 			break;
 		case "add_project":
 			bindController("home", {title: "Home", projects: getObjects("projects")});

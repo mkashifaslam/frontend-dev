@@ -23,7 +23,6 @@ function getObj(type = "user") {
 
 function setObjectId(type = "usr") {
 	var newCountVal = getObjectId(type);
-	console.log("====new id value====="+newCountVal);
 	localStorage.setItem(type+"_count", newCountVal);
 	return newCountVal;
 }
@@ -51,6 +50,22 @@ function userAuth(email: "", password: "") {
 	}
 	return user;	
 }
+
+function getObjectById(id: string, type = "usr") {
+	var object = null;
+	var objects = getObjects(type);
+	if(objects) {
+		for(var i=0; i < objects.length; i++) {
+			var obj = objects[i];
+			if(obj['id'] === id) {
+				object = obj;
+				break;
+			}
+		}	
+	}
+	return object;	
+}
+
 function setUser(user) {
 	localStorage.setItem("user", user);
 }
@@ -59,5 +74,6 @@ export {
 	getObjects,
 	setUser,
 	setObjectId,
-	userAuth
+	userAuth,
+	getObjectById
 }
