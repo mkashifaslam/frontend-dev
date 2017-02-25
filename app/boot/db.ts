@@ -2,31 +2,31 @@ import $ = require("jQuery");
 import { User } from '../models/index';
 import { Login, Home } from '../controllers/index';
 
-function getUsers() {
-	var userObjs = [];
-	var users = localStorage.getItem("users");
-	if(users) {
-		userObjs = JSON.parse(users);
+function getObjects(type = "users") {
+	var typeObjs = [];
+	var objs = localStorage.getItem(type);
+	if(objs) {
+		typeObjs = JSON.parse(objs);
 	}
 
-	return userObjs;
+	return typeObjs;
 }
 
-function getUser() {
-	var user = localStorage.getItem("user");
-	if(user) {
-		var userObj = JSON.parse(user);
-		return userObj;
+function getObj(type = "user") {
+	var obj = localStorage.getItem(type);
+	if(obj) {
+		var typeObj = JSON.parse(obj);
+		return typeObj;
 	}
 	return {};
 }
 function userAuth(email: "", password: "") {
 	var user = null;
-	var users = getUsers();
+	var users = getObjects();
 	if(users) {
 		for(var i=0; i < users.length; i++) {
 			var userObj = users[i];
-			if(userObj['email'] == email && userObj['password'] == password) {
+			if(userObj['email'] === email && userObj['password'] === password) {
 				user = userObj;
 				break;
 			}
@@ -38,8 +38,8 @@ function setUser(user) {
 	localStorage.setItem("user", user);
 }
 export {
-	getUser,
-	getUsers,
+	getObj,
+	getObjects,
 	setUser,
 	userAuth
 }

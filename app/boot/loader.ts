@@ -1,7 +1,7 @@
 import $ = require("jQuery");
 import { User } from '../models/index';
-import { Login, Home } from '../controllers/index';
-import { userAuth,setUser,getUsers } from './db';
+import { Login, Home, Projects } from '../controllers/index';
+import { userAuth,setUser,getObjects } from './db';
 
 function viewLoader(page: string, data: Object) {
 	var template = require(`../templates/${page}.ejs`);
@@ -30,7 +30,7 @@ function bindController(controller, data) {
 			eventBinder("home_project", controllerClass);
 			break;
 		case "add_project":
-			controllerClass = new Home();
+			controllerClass = new Projects();
 			eventBinder("add_project", controllerClass);
 			break;
 		case "project_detail":
@@ -89,7 +89,8 @@ function eventBinder(eventName, controller) {
 		});
 	} else if(eventName == "add_project") {
 		$("form").on('click', 'button', function(){
-			eventHandler(eventName, controller, {title: eventName});
+			var project = $("#add-project-form").serializeArray();
+			eventHandler(eventName, controller, {title: eventName, data: project});
 		});
 	} else if(eventName == "project_detail") {
 		$("form").on('click', 'button', function(){
@@ -133,6 +134,8 @@ function eventHandler(eventName, controller, data) {
 		action = controller.signUpHandler(data);
 	} else if(eventName == "home") {
 		action = controller.list(data);
+	} else if(eventName == "add_project") {
+		action = controller.add(data);
 	} else {
 		action = true;
 	}
@@ -147,7 +150,7 @@ function routeHandler(eventName, controller) {
 			bindController("home", {title: "Add Project"});
 			break;
 		case "user_nav_link":
-			bindController("users", {title: "Users", users: getUsers()});
+			bindController("users", {title: "Users", users: getObjects()});
 			break;
 		case "logout_nav_link":
 			logout();

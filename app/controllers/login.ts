@@ -1,5 +1,5 @@
 import { User } from '../models/user';
-import { getUsers } from '../boot/db';
+import { getObjects } from '../boot/db';
 
 export class Login {
 	
@@ -27,7 +27,7 @@ export class Login {
 		this.user.firstName = data['firstName'];
 		this.user.lastName = data['lastName'];
 		this.user.role = data['role'];
-		var users = getUsers();
+		var users = getObjects();
 		if( users ) {
 			users.push(this.user);	
 		} else {
