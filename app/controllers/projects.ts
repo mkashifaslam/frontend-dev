@@ -48,7 +48,8 @@ export class Projects {
 
 	dashboard(data): boolean {
 		var projectId = data.projectId;
-		console.log(getObjectById(projectId, "projects"));
-		return false;
+		var project = getObjectById(projectId, "projects");
+		console.log(project);
+		return project;
 	}
 }

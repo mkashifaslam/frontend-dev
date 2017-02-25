@@ -171,7 +171,7 @@ function routeHandler(eventName, controller) {
 			bindController("add_project", {title: "Add Project"});
 			break;
 		case "home_project":
-			bindController("project", {title: "Project Dashboard", id: 4});
+			bindController("project", {title: "Project Dashboard"});
 			break;
 		case "add_project":
 			bindController("home", {title: "Home", projects: getObjects("projects")});
