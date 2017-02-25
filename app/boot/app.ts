@@ -9,7 +9,7 @@ export default () => {
 	var page = "signin";
 	if(auth(getObj())) {
 		page = "home"
-		bindController(page, { title: "Home" });
+		bindController(page, { title: "Home" , projects: getObjects("projects")});
 	} else {
 		bindController(page, { title: "Signin" });	
 	}

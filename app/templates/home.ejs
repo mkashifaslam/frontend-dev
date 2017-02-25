@@ -17,42 +17,20 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td><a class="project_detail" href="javascript:void(0);">xyz</a></td>
-              <td>Projects xyz</td>
-              <td><a href="#">etc.pdf</a>,<a href="#">etc.doc</a></td>
-              <td>Salman Khan</td>
-              <td>Saqib Dogar, Kabir Sagheer</td>
-              <td><a href="project.html"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td><a class="project_detail" href="javascript:void(0);">pqr</a></td>
-              <td>Projects pqr</td>
-              <td><a href="#">etc.pdf</a>,<a href="#">etc.doc</a></td>
-              <td>Salman Khan</td>
-              <td>Saqib Dogar, Kabir Sagheer</td>
-              <td><a href="project.html"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td><a class="project_detail" href="javascript:void(0);">xyz</a></td>
-              <td>Projects cty</td>
-              <td><a href="#">etc.pdf</a>,<a href="#">etc.doc</a></td>
-              <td>Salman Khan</td>
-              <td>Saqib Dogar, Kabir Sagheer</td>
-              <td><a href="project.html"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td><a class="project_detail" href="javascript:void(0);">007</a></td>
-              <td>Projects 007</td>
-              <td><a href="#">etc.pdf</a>,<a href="#">etc.doc</a>,<a href="#">etc.ppt</a></td>
-              <td>Salman Khan</td>
-              <td>Saqib Dogar, Kabir Sagheer</td>
-              <td><a href="project.html"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-            </tr>
+          <% if (projects.length > 0) { %>
+          <% for(var i=0; i < projects.length; i++) { %>
+            <% var project = projects[i]; %>  
+              <tr>
+                <th scope="row"><%= i+1 %></th>
+                <td><a class="project_detail" href="javascript:void(0);"><%= project.title %></a></td>
+                <td><%= project.description %></td>
+                <td><a href="#">etc.pdf</a>,<a href="#">etc.doc</a></td>
+                <td><%= project.teamLead %></td>
+                <td><%= project.members.join(",") %></td>
+                <td><a href="project.html"><i class="fa fa-eye" aria-hidden="true"></i></a></td>  
+              </tr>
+            <% } %>
+            <% } %>
           </tbody>
         </table>
       </div>

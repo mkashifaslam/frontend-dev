@@ -147,7 +147,7 @@ function eventHandler(eventName, controller, data) {
 function routeHandler(eventName, controller) {
 	switch (eventName) {
 		case "home_nav_link":
-			bindController("home", {title: "Add Project"});
+			bindController("home", {title: "Add Project", projects: getObjects("projects")});
 			break;
 		case "user_nav_link":
 			bindController("users", {title: "Users", users: getObjects()});
@@ -156,13 +156,13 @@ function routeHandler(eventName, controller) {
 			logout();
 			break;
 		case "login":
-			bindController("home", {title: "Signup"});
+			bindController("home", {title: "Signup", projects: getObjects("projects")});
 			break;
 		case "login_signup":
 			bindController("signup", {title: "Signup"});
 			break;
 		case "signup":
-			bindController("home", {title: "Home"});
+			bindController("home", {title: "Home", projects: getObjects("projects")});
 			break;		
 		case "home":
 			bindController("add_project", {title: "Add Project"});
@@ -171,10 +171,10 @@ function routeHandler(eventName, controller) {
 			bindController("project", {title: "Project Dashboard"});
 			break;
 		case "add_project":
-			bindController("home", {title: "Home"});
+			bindController("home", {title: "Home", projects: getObjects("projects")});
 			break;
 		case "project_detail":
-			bindController("home", {title: "Home"});
+			bindController("home", {title: "Home", projects: getObjects("projects")});
 			break;
 		case "project":
 			bindController("add_task", {title: "Project Dashboard"});

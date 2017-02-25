@@ -1,5 +1,6 @@
 import $ = require("jQuery");
 import { Project } from '../models/project';
+import { getObjects } from '../boot/db';
 
 export class Projects {
 	
@@ -31,8 +32,17 @@ export class Projects {
 			}
 		});
 		this.project = project;
+		if(project.title !== "" && project.description !== "" && project.teamLead !== "") {
+			var projects = getObjects("projects");
+			if( projects ) {
+				projects.push(this.project);	
+			} else {
+				projects = this.project;
+			}
+			localStorage.setItem('projects', JSON.stringify(projects));
+		}
 		console.log(this.project);
-		return false;
+		return true;
 	}
 
 	list(): boolean {
