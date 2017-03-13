@@ -116,8 +116,7 @@ function eventBinder(eventName, controller) {
 		$("form").on('click', 'button', function(){
 			var task = $("#add-task-form").serializeArray();
 			var projectId = $("#projectId").val();
-			var tasks = getTasksOfProject(parseInt(projectId));
-			eventHandler(eventName, controller, {title: eventName, data: task, tasks: tasks});
+			eventHandler(eventName, controller, {title: eventName, data: task, projectId: projectId});
 		});
 	} else if(eventName == "task_detail") {
 		$(".form-group").on('click', 'button', function(){
@@ -146,6 +145,8 @@ function eventHandler(eventName, controller, data) {
 		action = controller.add(data);
 	} else if(eventName == "add_task") {
 		action = controller.add(data);
+		var tasks = getTasksOfProject(parseInt(data['projectId']));
+		data['tasks'] = tasks;
 	} else if(eventName == "home_project") {
 		action = controller.dashboard(data);
 	} else {
