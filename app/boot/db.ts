@@ -21,6 +21,24 @@ function getObj(type = "user") {
 	return {};
 }
 
+function getTasksOfProject(projectId = 0) {
+	var projectTasks = [];
+	if(projectId > 0) {
+		var tasks = getObjects("tasks");
+		if(tasks) {
+			for(var i=0; i < tasks.length; i++) {
+				var obj = tasks[i];
+				if(obj['projectId'] === projectId) {
+					//console.log(" === projectID ==="+obj['projectId']);
+					projectTasks.push(obj);
+				}
+			}	
+		}	
+	}
+	
+	return projectTasks;
+}
+
 function setObjectId(type = "usr") {
 	var newCountVal = getObjectId(type);
 	localStorage.setItem(type+"_count", newCountVal);
@@ -75,5 +93,6 @@ export {
 	setUser,
 	setObjectId,
 	userAuth,
-	getObjectById
+	getObjectById,
+	getTasksOfProject
 }

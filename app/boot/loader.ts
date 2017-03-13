@@ -1,7 +1,7 @@
 import $ = require("jQuery");
 import { User } from '../models/index';
-import { Login, Home, Projects } from '../controllers/index';
-import { userAuth,setUser,getObjects } from './db';
+import { Login, Home, Projects, Tasks } from '../controllers/index';
+import { userAuth,setUser,getObjects,getTasksOfProject } from './db';
 
 function viewLoader(page: string, data: Object) {
 	var template = require(`../templates/${page}.ejs`);
@@ -42,7 +42,7 @@ function bindController(controller, data) {
 			eventBinder("users", controllerClass);
 			break;
 		case "add_task":
-			controllerClass = new Home();
+			controllerClass = new Tasks();
 			eventBinder("add_task", controllerClass);
 			break;
 		case "project":
@@ -50,7 +50,7 @@ function bindController(controller, data) {
 			eventBinder("project", controllerClass);
 			break;
 		case "task_detail":
-			controllerClass = new Home();
+			controllerClass = new Tasks();
 			eventBinder("task_detail", controllerClass);
 			break;		
 		default:
@@ -85,8 +85,11 @@ function eventBinder(eventName, controller) {
 			eventHandler(eventName, controller, {title: eventName});
 		});
 		$("table").on('click', 'a', function(){
-			var projectId = $(this).attr("id");
-			eventHandler("home_project", controller, {title: eventName, projectId: projectId});
+			var projectId = $(this).attr("title");
+			var projectName = $(this).text();
+			console.log(projectName);
+			var tasks = getTasksOfProject(parseInt(projectId));
+			eventHandler("home_project", controller, {title: projectName, projectId: projectId, tasks: tasks});
 		});
 	} else if(eventName == "add_project") {
 		$("form").on('click', 'button', function(){
@@ -103,14 +106,18 @@ function eventBinder(eventName, controller) {
 		});
 	} else if(eventName == "project") {
 		$(".task-link").on('click', 'a', function(){
-			eventHandler(eventName, controller, {title: eventName});
+			var projectId = $("#projectId").val();
+			eventHandler(eventName, controller, {title: eventName, projectId: projectId});
 		});
 		$(".task-title").on('click', 'a', function(){
 			eventHandler("project_task", controller, {title: eventName});
 		});
 	} else if(eventName == "add_task") {
 		$("form").on('click', 'button', function(){
-			eventHandler(eventName, controller, {title: eventName});
+			var task = $("#add-task-form").serializeArray();
+			var projectId = $("#projectId").val();
+			var tasks = getTasksOfProject(parseInt(projectId));
+			eventHandler(eventName, controller, {title: eventName, data: task, tasks: tasks});
 		});
 	} else if(eventName == "task_detail") {
 		$(".form-group").on('click', 'button', function(){
@@ -137,17 +144,19 @@ function eventHandler(eventName, controller, data) {
 		action = controller.list(data);
 	} else if(eventName == "add_project") {
 		action = controller.add(data);
+	} else if(eventName == "add_task") {
+		action = controller.add(data);
 	} else if(eventName == "home_project") {
 		action = controller.dashboard(data);
 	} else {
 		action = true;
 	}
 	if(action) {
-		routeHandler(eventName, controller);	
+		routeHandler(eventName, controller, data);	
 	}
 }
 
-function routeHandler(eventName, controller) {
+function routeHandler(eventName, controller, data) {
 	switch (eventName) {
 		case "home_nav_link":
 			bindController("home", {title: "Add Project", projects: getObjects("projects")});
@@ -171,7 +180,7 @@ function routeHandler(eventName, controller) {
 			bindController("add_project", {title: "Add Project"});
 			break;
 		case "home_project":
-			bindController("project", {title: "Project Dashboard"});
+			bindController("project", data);
 			break;
 		case "add_project":
 			bindController("home", {title: "Home", projects: getObjects("projects")});
@@ -180,16 +189,16 @@ function routeHandler(eventName, controller) {
 			bindController("home", {title: "Home", projects: getObjects("projects")});
 			break;
 		case "project":
-			bindController("add_task", {title: "Project Dashboard"});
+			bindController("add_task", data);
 			break;
 		case "task_detail":
-			bindController("project", {title: "Task Detail"});
+			bindController("project", data);
 			break;
 		case "project_task":
 			bindController("task_detail", {title: "Task Detail"});
 			break;	
 		case "add_task":
-			bindController("project", {title: "Project Dashboard"});
+			bindController("project", data);
 			break;	
 		default:
 			bindController("login", {title: "Login"});

@@ -2,21 +2,24 @@
 
     <div class="container-fluid">
       <div class="content-container">
-        <h2>Project xyz</h2>
+        <h2><%= title %></h2>
         <span class="pull-right task-link no-print"><a href="javascript:void(0);">Add New Task</a></span>
+        <form>
+          <input type="hidden" name="projectId" id="projectId" value="<%= projectId %>" />
+        </form>
          <div class="row">
           <div class="col-md-4 col-sm-6 col-lg-3">
              <div class="card">
               <h3 class="card-header">New</h3>
               <div class="card-block">
-                <div class="card-block-content">
-                   <div class="task-title"><a href="javascript:void(0);">Front end Development</a></div>
-                   <div class="pull-right"><i class="fa fa-user no-print" aria-hidden="true"></i><span class="assignee">Muhammad Kashif</span></div>
-                </div>                
-                <div class="card-block-content">
-                   <div class="task-title"><a href="javascript:void(0);">Front end Development</a></div>
-                   <div class="pull-right"><i class="fa fa-user no-print" aria-hidden="true"></i><span class="assignee">Muhammad Kashif</span></div>
-                </div> 
+                <% tasks.forEach(function(task) { 
+                 if (parseInt(task['status']) === 1) { %>
+                  <div class="card-block-content">
+                   <div class="task-title"><a href="javascript:void(0);"><%= task['title'] %></a></div>
+                   <div class="pull-right"><i class="fa fa-user no-print" aria-hidden="true"></i><span class="assignee">
+                   <%= task['assignedTo'] %></span></div>
+                  </div>
+                <% }}); %>       
               </div>
             </div> 
           </div>
@@ -24,14 +27,17 @@
              <div class="card">
               <h3 class="card-header">In Progress</h3>
               <div class="card-block">
-                <div class="card-block-content">
-                   <div class="task-title"><a href="javascript:void(0);">Front end Development</a></div>
-                   <div class="pull-right"><i class="fa fa-user no-print" aria-hidden="true"></i><span class="assignee">Muhammad Kashif</span></div>
-                </div>
-                <div class="card-block-content">
-                   <div class="task-title"><a href="javascript:void(0);">Front end Development</a></div>
-                   <div class="pull-right"><i class="fa fa-user no-print" aria-hidden="true"></i><span class="assignee">Muhammad Kashif</span></div>
-                </div>                
+                
+                <% tasks.forEach(function(task) { 
+                 if (parseInt(task['status']) === 2) { %>
+                  <div class="card-block-content">
+                   <div class="task-title"><a href="javascript:void(0);"><%= task['title'] %></a></div>
+                   <div class="pull-right"><i class="fa fa-user no-print" aria-hidden="true"></i><span class="assignee">
+                   <%= task['assignedTo'] %></span></div>
+                  </div>
+                <% }}); %> 
+              
+
               </div>
             </div> 
           </div>
@@ -39,14 +45,16 @@
              <div class="card">
               <h3 class="card-header">Done</h3>
               <div class="card-block">
-                <div class="card-block-content">
-                   <div class="task-title"><a href="javascript:void(0);">Front end Development</a></div>
-                   <div class="pull-right"><i class="fa fa-user no-print" aria-hidden="true"></i><span class="assignee">Muhammad Kashif</span></div>
-                </div>
-                <div class="card-block-content">
-                   <div class="task-title"><a href="javascript:void(0);">Front end Development</a></div>
-                   <div class="pull-right"><i class="fa fa-user no-print" aria-hidden="true"></i><span class="assignee">Muhammad Kashif</span></div>
-                </div>                
+                
+                <% tasks.forEach(function(task) { 
+                 if (parseInt(task['status']) === 3) { %>
+                  <div class="card-block-content">
+                   <div class="task-title"><a href="javascript:void(0);"><%= task['title'] %></a></div>
+                   <div class="pull-right"><i class="fa fa-user no-print" aria-hidden="true"></i><span class="assignee">
+                   <%= task['assignedTo'] %></span></div>
+                  </div>
+                <% }}); %> 
+              
               </div>
             </div> 
           </div>
@@ -54,22 +62,15 @@
              <div class="card">
               <h3 class="card-header">Backlog</h3>
               <div class="card-block">
-                <div class="card-block-content">
-                   <div class="task-title"><a href="javascript:void(0);">Front end Development</a></div>
-                   <div class="pull-right"><i class="fa fa-user-plus no-print" aria-hidden="true"></i></div>
-                </div>
-                <div class="card-block-content">
-                   <div class="task-title"><a href="javascript:void(0);">Front end Development</a></div>
-                   <div class="pull-right"><i class="fa fa-user-plus no-print" aria-hidden="true"></i></div>
-                </div>
-                <div class="card-block-content">
-                   <div class="task-title"><a href="javascript:void(0);">Front end Development</a></div>
-                   <div class="pull-right"><i class="fa fa-user-plus no-print" aria-hidden="true"></i></div>
-                </div>
-                <div class="card-block-content">
-                   <div class="task-title"><a href="javascript:void(0);">Front end Development</a></div>
-                   <div class="pull-right"><i class="fa fa-user-plus no-print" aria-hidden="true"></i></div>
-                </div>                
+
+              <% tasks.forEach(function(task) { 
+                 if (parseInt(task['status']) === 4) { %>
+                  <div class="card-block-content">
+                   <div class="task-title"><a href="javascript:void(0);"><%= task['title'] %></a></div>
+                   <div class="pull-right"><i class="fa fa-user no-print" aria-hidden="true"></i><span class="assignee">
+                   <%= task['assignedTo'] %></span></div>
+                  </div>
+                <% }}); %> 
               </div>
             </div> 
           </div>

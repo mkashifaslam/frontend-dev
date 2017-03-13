@@ -50,6 +50,11 @@ export class Projects {
 		var projectId = data.projectId;
 		var project = getObjectById(projectId, "projects");
 		console.log(project);
+		console.log(data.tasks);
 		return project;
+	}
+
+	list(data): boolean {
+		return true;
 	}
 }

@@ -22,12 +22,12 @@
             <% var project = projects[i]; %>  
               <tr>
                 <th scope="row"><%= i+1 %></th>
-                <td><a class="project_detail" id="<%= project.id %>" href="javascript:void(0);"><%= project.title %></a></td>
+                <td><a class="project_detail" title="<%= project.id %>" href="javascript:void(0);"><%= project.title %></a></td>
                 <td><%= project.description %></td>
                 <td><a href="#">etc.pdf</a>,<a href="#">etc.doc</a></td>
                 <td><%= project.teamLead %></td>
                 <td><%= project.members.join(",") %></td>
-                <td><a class="project_detail" id="<%= project.id %>"  href="javascript:void(0);">view<i class="fa fa-eye" aria-hidden="true"></i></a></td>  
+                <td><a class="project_detail" title="<%= project.id %>"  href="javascript:void(0);">view<i class="fa fa-eye" aria-hidden="true"></i></a></td>  
               </tr>
             <% } %>
             <% } %>
